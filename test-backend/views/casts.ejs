@@ -1,0 +1,35 @@
+<%- include("partials/head", {title : "list-cast"}) %>
+<div class="container">
+    <%- include("partials/navbar") %>
+    <h1>List Cast</h1>
+    <a href="/casts/add">Add Cast</a><br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="name">Name</th>
+                <th scope="birth_year">Birth Year</th>
+                <th scope="phone_number">Phone Number</th>
+                <th scope="gender">Gender</th>
+                <th scope="action">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% cast.forEach(e => { %>
+            <tr>
+                <td><%= e.full_name() %></td>
+                <td><%= e.birth_year %></td>
+                <td><%= e.phone_number %></td>
+                <td><%= e.gender %></td>
+                <td><a href="/casts/edit/<%= e.id %>">Edit</a> ||
+                    <a href="/casts/delete/<%= e.id %>"
+                        onclick="return confirm('apakah anda yakin akan mengapus <%= e.full_name() %> ')">Delete</a> ||
+                    <a href="/casts/movies/<%= e.id %>">See Movies</a>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+
+    </table>
+</div>
+
+<%- include("partials/foot") %>

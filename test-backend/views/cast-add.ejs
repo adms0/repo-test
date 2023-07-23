@@ -1,0 +1,33 @@
+<%- include("partials/head-create-update", {title : "cast-add"}) %>
+<div class="container">
+    <%- include("partials/navbar-cast") %>
+    <h1>Add New Cast</h1>
+    <form action="/casts/add" method="POST">
+        <div class="form-group">
+            <label for="first_name">First Name</label><br>
+            <input type="text" name="first_name" class="form-control" id="first_name" placeholder="e.g: Leonardo ">
+        </div>
+        <div class="form-group">
+            <label for="last_name">Last Namer</label><br>
+            <input type="text" name="last_name" class="form-control" id="last_name" placeholder="e.g: Decaprio">
+        </div>
+        <div class="form-group">
+            <label for="birth_year">Birth Year</label><br>
+            <input type="number" name="birth_year" class="form-control" id="birth_year" placeholder="e.g: 1984">
+        </div>
+        <div class="form-group">
+            <label for="phone_number">Phone Number</label><br>
+            <input type="text" name="phone_number" class="form-control" id="phone_number" placeholder="e.g: 0818947121">
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender</label><br>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label><br><br>
+        </div>
+        <button type="submit" style="background-color: blue;">Save</button>
+        <button type="reset" style="background-color: red;"> <a href="/casts">Cancel</a></button>
+    </form>
+</div>
+<%- include("partials/foot") %>

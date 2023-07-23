@@ -1,0 +1,44 @@
+<%- include("partials/head-create-update") %>
+<div class="container">
+    <%- include("partials/navbar-movie") %>
+    <h1>Movie Edit</h1>
+    <form action="/movies/edit/<%= data.id %>" method="POST">
+        <div class="form-group">
+            <label for="name">Name</label><br>
+            <input type="text" name="name" class="form-control" id="name" placeholder="e.g: 12 Angry Men"
+                value="<%= data.name %>">
+        </div>
+        <div class="form-group">
+            <label for="released_year">Released Year</label><br>
+            <input type="number" name="released_year" class="form-control" placeholder="e.g: 1957"
+                value="<%= data.released_year %>">
+        </div>
+        <div class="form-group">
+            <label for="genre">Genre</label><br>
+            <select name="genre" class="form-group">
+                <option value="#">--Select--</option>
+                <option value="animation" <%= (data.genre === 'animation') ?  'selected' : '' %>>animation</option>
+                <option value="comedy" <%= (data.genre === 'comedy') ? 'selected' : '' %>>comedy</option>
+                <option value="science fiction" <%= (data.genre === 'science fiction') ? 'selected' : '' %>>
+                    science fiction</option>
+                <option value="drama" <%= (data.genre === 'drama') ? 'selected' : '' %>>drama</option>
+                <option value="horor" <%= (data.genre === 'horor') ? 'selected' : '' %>>horor</option>
+                <option value="relegious" <%= (data.genre === 'relegious') ? 'selected' : '' %>>relegious</option>
+                <option value="thriller" <%= (data.genre === 'thriller') ? 'selected' : '' %>>thriller</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="prodId">Production House</label>
+            <select name="prodId" class="form-group">
+                <option value="#" <%= (!data.prodId) ? "selected" : "" %>>---Select---</option>
+                <% movie.forEach(ph => { %>
+                <option value="<%= ph.id %>" <%= (data.prodId === ph.id) ? 'selected' : '' %>>
+                    <%= ph.dataValues.name_prodHouse %>
+                </option>
+                <% }) %>
+            </select>
+        </div>
+        <button type="submit">Save</button>
+    </form>
+</div>
+<%- include("partials/foot") %>

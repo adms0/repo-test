@@ -1,0 +1,22 @@
+<%- include("partials/head") %>
+<div class="container">
+    <%- include("partials/navbar") %>
+    <h1>Production Houses</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="name_prodHouse">Name</th>
+                <th scope="headquarters">Head Quarters</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% ph.forEach(el=>{ %>
+            <tr>
+                <td><%= el.name_prodHouse %></td>
+                <td><%= el.headquarters %></td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+<%- include("partials/foot") %>

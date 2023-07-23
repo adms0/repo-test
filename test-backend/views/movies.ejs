@@ -1,0 +1,34 @@
+<%- include("partials/head", {title : "movies"}) %>
+<div class="container">
+    <%- include("partials/navbar") %>
+    <h1>Movies</h1>
+    <a href="/movies/add">Add New Movie</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="name_prodHouse">Name</th>
+                <th scope="released_year">released_year</th>
+                <th scope="genre">Genre</th>
+                <th scope="ProductionHouse">Production House</th>
+                <th scope="Action">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% movie.forEach(e=>{ %>
+            <tr>
+                <td><%= e.name %></td>
+                <td><%= e.released_year %></td>
+                <td><%= e.genre %></td>
+                <td><%= (e.ProductionHouse) ? e.ProductionHouse.name_prodHouse : "unknown" %></td>
+                <td>
+                    <a href="/movies/edit/<%= e.id %>">Edit</a> ||
+                    <a href="/movies/delete/<%= e.id %>"
+                        onclick="return confirm('apakah anda yakin untuk menghapus film <%= e.name %>')"">Delete</a> ||
+                    <a href="/movies/casts/add/<%=e.id %>">Add Cast</a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+<%- include("partials/foot") %>

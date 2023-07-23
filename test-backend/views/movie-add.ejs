@@ -1,0 +1,34 @@
+<%- include("partials/head-create-update", {title : "movie-add"}) %>
+<div class="container">
+    <%- include("partials/navbar-movie") %>
+    <h1>Add New Movie</h1>
+    <% if(error) { %>
+        <p><%= error %></p>
+    <% } %>
+    <form action="/movies/add" method="POST">
+        <div class="form-group">
+            <label for="name">Name</label><br>
+            <input type="text" name="name" class="form-control" id="name" placeholder="e.g: 12 Angry Men">
+        </div>
+        <div class="form-group">
+            <label for="released_year">Released Year</label><br>
+            <input type="text" name="released_year" class="form-control" id="released_year" placeholder="e.g: 1957">
+        </div>
+        <div class="form-group">
+            <label for="genre">Genre</label> <br>
+            <select name="genre" class="form-group">
+                <option value="#">--Select--</option>
+                <option value="animation">animation</option>
+                <option value="comedy">comedy</option>
+                <option value="science fiction">science fiction</option>
+                <option value="drama">drama</option>
+                <option value="horor">horor</option>
+                <option value="relegious">relegious</option>
+                <option value="thriller">thriller</option>
+            </select>
+        </div>
+        <button type="submit" style="background-color: blue;">Save</button>
+        <button type="reset" style="background-color: red;"> <a href="/movies">Cancel</a></button>
+    </form>
+</div>
+<%- include("partials/foot") %>
